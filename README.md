@@ -5,6 +5,8 @@
 
 # Instalación 1 comando:
 
+- DevCoreX --Verison `[1.3.1]`
+
 ```bash
 bash -i <(curl -sL https://is.gd/nvims)
 ```
