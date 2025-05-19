@@ -1,0 +1,21 @@
+#!/bin/bash
+
+ARCH=$(uname -m)
+if [ "$ARCH" != "aarch64" ]; then
+    echo -e "Copia no compatible con tu dispositivo.\nÚnicamente compatible."
+    exit 1
+fi
+
+yes | pkg update && yes | pkg upgrade
+
+TERMUX_DIR="/data/data/com.termux/files"
+
+curl -L -o nvim-termux-dev.tar.gz https://github.com/CmbRDevMx/nvim-termux/raw/refs/heads/main/nvim-termux-dev.tar.gz
+tar -zxf nvim-termux-dev.tar.gz -C $TERMUX_DIR --recursive-unlink --preserve-permissions
+
+# Verificar si el archivo existe antes de eliminarlo
+if [ -f "./nvim-termux-dev.tar.gz" ]; then
+    rm nvim-termux-dev.tar.gz
+fi
+
+echo "¡Restauración completada!"
